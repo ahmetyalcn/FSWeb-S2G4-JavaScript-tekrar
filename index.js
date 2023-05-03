@@ -29,10 +29,10 @@ function KareninAlani(kenaruzunlugu){
 			4. Hesaplanan çemberin çevresi döndürülecektir.
 		*/
 
-function CemberinCevresi(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinCevresi(yaricap){
+	return 2 * pi * yaricap
 }
-
+console.log(CemberinCevresi(5))
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -47,10 +47,10 @@ function CemberinCevresi(/* kodlar buraya */){
 			4. Hesaplanan çemberin alanı döndürülecektir.
 		*/
 		
-function CemberinAlani(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinAlani(yaricap,pi){
+	return pi * Math.pow(yaricap,2)
 }
-
+console.log(CemberinAlani(15,pi))
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -67,52 +67,68 @@ function CemberinAlani(/* kodlar buraya */){
 			ÖRNEK: sayilar dizisi içerisinde 45 sayısı 3 kere yazılmış. "45 sayısı 3 tekrar edilmiştir" stringini `tekraredensayilar` dizisine aktaracağız.
 			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en az 2 kere döngü yazmalısınız. Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
 	*/
-	
-	
+
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
-
-
-
 	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
 	
 	//3a çözümü
+	enbuyuk = 0;
+	for(let i=0; i< sayilar.length; i++)
+		if(sayilar[i] > enbuyuk)
+			enbuyuk = sayilar[i];
+	
+	//console.log(enbuyuk);
 
-	/* kodlar buraya */
+	enkucuk = sayilar[0];
+	for(let i=1; i< sayilar.length; i++)
+		if(sayilar[i] < enkucuk)
+			enkucuk = sayilar[i];
 	
-	
-	
+	//console.log(enkucuk)
+
 	// 3b çözümü:
 
-	/* kodlar buraya */
-		
-		
-		
+	ucetambolunenler = [];
+	sayilar.forEach(sayi=>!(sayi%3) ? ucetambolunenler.push(sayi): false)
+	//console.log(ucetambolunenler)
+
 	//3c çözümü:
 	
-	/* kodlar buraya */
-
+	ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi)=>toplam+sayi)
+	//console.log(ucebolunenlerintoplami)
 	
 	
 	//3d çözümü
 	
-	/* kodlar buraya */
 
+	besyuzdenkucuksayilar = sayilar.filter(sayi => sayi < 500)
+	//console.log(besyuzdenkucuksayilar)
 
 
 	//3e çözümü
 
-	/* kodlar buraya */
+	siralisayilar =	besyuzdenkucuksayilar.sort((a,b)=>(a-b))
 	
 	
 	//3f çözümü
 	
 	/* kodlar buraya */
+	tekraredensayilar = [];
+	let temp = {}
 
+	sayilar.forEach(sayi => (temp[sayi]) ? temp[sayi]++ : temp[sayi] = 1)
 
+	for(let sayi in temp)
+		if(temp[sayi] == 1)
+			delete temp[sayi];
+		else 
+			tekraredensayilar = [...tekraredensayilar,(`${sayi} sayısı ${temp[sayi]} kere tekrar edilmiştir`)]
+	
 
+	console.log(tekraredensayilar)
+		
 
 	
-		
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa(){
