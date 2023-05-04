@@ -72,29 +72,29 @@ console.log(CemberinAlani(15,pi))
 	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
 	
 	//3a çözümü
-	enbuyuk = 0;
-	for(let i=0; i< sayilar.length; i++)
-		if(sayilar[i] > enbuyuk)
-			enbuyuk = sayilar[i];
-	
-	//console.log(enbuyuk);
-
+	enbuyuk = sayilar[0];
 	enkucuk = sayilar[0];
-	for(let i=1; i< sayilar.length; i++)
-		if(sayilar[i] < enkucuk)
-			enkucuk = sayilar[i];
-	
-	//console.log(enkucuk)
+	for(let sayi of sayilar){
+		if(sayi > enbuyuk)
+			enbuyuk = sayi;
+		if(sayi < enkucuk)
+			enkucuk = sayi;
+	}
+
+
+	console.log(enbuyuk);
+	console.log(enkucuk)
 
 	// 3b çözümü:
 
 	ucetambolunenler = [];
-	sayilar.forEach(sayi=>!(sayi%3) ? ucetambolunenler.push(sayi): false)
-	//console.log(ucetambolunenler)
+	sayilar.forEach(sayi=>!(sayi%3) ? ucetambolunenler.push(sayi) : false);
+	//ucetambolunenler = sayilar.reduce((total, sayi)=>{ return !(sayi%3) ? [...total, sayi] : total },[])
+	console.log(ucetambolunenler)
 
 	//3c çözümü:
 	
-	ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi)=>toplam+sayi)
+	ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi)=>toplam+sayi, 0)
 	//console.log(ucebolunenlerintoplami)
 	
 	
